@@ -17,11 +17,11 @@ if 'PyQt5.QtCore' not in sys.modules:
     qtcore.QPointF = QPointF
     sys.modules['PyQt5.QtCore'] = qtcore
 
-# ----- Add py/ to sys.path and import your engine -----
+# ----- Add py/ to .path and import your engine -----
 ROOT = os.path.dirname(__file__)
 PYDIR = os.path.join(ROOT, 'py')
 if PYDIR not in sys.path:
-    sys.path.append(PYDIR)
+    sys.path.insert(0, PYDIR) 
 
 from graph import Graph  # your file
 # -----------------------------------------------------
@@ -180,4 +180,5 @@ with col_plot:
         xaxis=dict(visible=False), yaxis=dict(visible=False),
         dragmode='pan', height=700
     )
+
     st.plotly_chart(fig, use_container_width=True)
